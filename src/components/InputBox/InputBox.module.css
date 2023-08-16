@@ -1,4 +1,9 @@
 .body {
   height: calc(100vh - 8px);
   padding: 4px;
+  font-family: monospace;
+}
+
+.body:focus-visible {
+  outline: none;
 }
