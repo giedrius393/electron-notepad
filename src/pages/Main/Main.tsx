@@ -1,11 +1,10 @@
 import InputBox from '../../components/InputBox/InputBox';
-import { useState } from "react";
+import { useState } from 'react';
 
 const Main = () => {
   const [text, setText] = useState('');
-  console.log(text);
 
-  return <InputBox onTextChange={setText}/>;
+  return <InputBox onTextChange={setText} text={text} />;
 };
 
 export default Main;

@@ -1,22 +1,29 @@
-import { SyntheticEvent } from 'react';
+import { SyntheticEvent, useEffect, useMemo, useRef, useState } from 'react';
 import styles from './InputBox.module.css';
 
 interface InputBoxProps {
   onTextChange?: (text: string) => void;
+  text: string;
 }
 
-const InputBox = ({ onTextChange }: InputBoxProps) => {
-  const handleInput = (e: SyntheticEvent) => {
-    const target = e.target as HTMLInputElement;
-    onTextChange(target.innerText);
-  }
+const InputBox = ({ onTextChange, text }: InputBoxProps) => {
+  const numberOfLines = useMemo(() => text.split('\n').length, [text]);
 
   return (
-    <div
-      className={styles.body}
-      contentEditable
-      onInput={handleInput}
-    />
+    <div className={styles.body}>
+      <div className={styles.lineNumbers}>
+        {Array(numberOfLines)
+          .fill(0)
+          .map((_, index) => (
+            <span>{index + 1}</span>
+          ))}
+      </div>
+      <textarea
+        className={styles.editable}
+        value={text}
+        onChange={(e) => onTextChange(e.target.value)}
+      />
+    </div>
   );
 };
 

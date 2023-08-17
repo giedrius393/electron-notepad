@@ -1,9 +1,29 @@
 .body {
-  height: calc(100vh - 8px);
-  padding: 4px;
+  display: flex;
+  flex-direction: row;
   font-family: monospace;
 }
 
-.body:focus-visible {
+.lineNumbers {
+  display: flex;
+  flex-direction: column;
+  padding-top: 4px;
+  padding-left: 8px;
+  background-color: lightgray;
+  text-align: right;
+  min-width: 30px;
+}
+
+.editable {
+  min-height: calc(100vh - 8px);
+  padding: 4px;
+  flex: 1;
+  border: none;
+  resize: none;
+  line-height: 15px;
+  overflow: hidden;
+}
+
+.editable:focus-visible {
   outline: none;
 }
