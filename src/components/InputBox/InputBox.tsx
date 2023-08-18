@@ -1,4 +1,4 @@
-import { SyntheticEvent, useEffect, useMemo, useRef, useState } from 'react';
+import { useMemo } from 'react';
 import styles from './InputBox.module.css';
 
 interface InputBoxProps {
@@ -15,7 +15,7 @@ const InputBox = ({ onTextChange, text }: InputBoxProps) => {
         {Array(numberOfLines)
           .fill(0)
           .map((_, index) => (
-            <span>{index + 1}</span>
+            <span key={`${index}_number`}>{index + 1}</span>
           ))}
       </div>
       <textarea
