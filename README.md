@@ -1,9 +1,11 @@
 # electron-notepad
 
-The react application which runs on electron
+The Electron notepad application which runs on React
 
-Run the app:
+![Screenshot](./screenshot.png)
 
+
+To run the app:
 
 ```
 yarn install
