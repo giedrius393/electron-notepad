@@ -6,6 +6,7 @@ export interface IElectronAPI {
     callback: (event: IpcRendererEvent, file: ReadFile) => void,
   ) => void;
   handleFileSave: (callback: (event: IpcRendererEvent) => void) => void;
+  removeFileSaveHandler: () => void;
   saveExistingFile: (file: WriteFile) => void;
   saveNewFile: (content: string) => void;
 }

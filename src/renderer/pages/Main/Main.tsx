@@ -13,7 +13,7 @@ const Main = () => {
   }, []);
 
   useEffect(() => {
-    window.electronAPI.handleFileSave(() => {
+    const onFileSave = () => {
       if (currentPath) {
         window.electronAPI.saveExistingFile({
           content: text,
@@ -22,7 +22,13 @@ const Main = () => {
       } else {
         window.electronAPI.saveNewFile(text);
       }
-    });
+    };
+
+    window.electronAPI.handleFileSave(onFileSave);
+
+    return () => {
+      window.electronAPI.removeFileSaveHandler();
+    };
   }, [currentPath, text]);
 
   return <InputBox onTextChange={setText} text={text} />;
