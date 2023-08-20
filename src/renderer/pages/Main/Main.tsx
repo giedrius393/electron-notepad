@@ -1,7 +1,13 @@
 import InputBox from '../../components/InputBox/InputBox';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Main = () => {
+  useEffect(() => {
+    window.electronAPI.handleFileOpen((_, value) => {
+      setText(new TextDecoder().decode(value));
+    });
+  }, []);
+
   const [text, setText] = useState('');
 
   return <InputBox onTextChange={setText} text={text} />;
