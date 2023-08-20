@@ -32,9 +32,17 @@ export const getTemplate = (
             if (response.filePaths && response.filePaths.length > 0) {
               const fileContent = fs.readFileSync(response.filePaths[0]);
 
-              mainWindow.webContents.send('file-selected', fileContent);
+              mainWindow.webContents.send('file-selected', {
+                content: fileContent,
+                path: response.filePaths[0],
+              });
             }
           },
+        },
+        {
+          label: 'Save',
+          accelerator: 'CmdOrCtrl+S',
+          click: () => mainWindow.webContents.send('save-file'),
         },
       ],
     },

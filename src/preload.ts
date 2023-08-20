@@ -6,4 +6,10 @@ contextBridge.exposeInMainWorld('electronAPI', {
   handleFileOpen: (
     callback: (event: IpcRendererEvent, ...args: any[]) => void,
   ) => ipcRenderer.on('file-selected', callback),
+  handleFileSave: (
+    callback: (event: IpcRendererEvent, ...args: any[]) => void,
+  ) => ipcRenderer.on('save-file', callback),
+  saveExistingFile: (...args: any[]) =>
+    ipcRenderer.send('existing-file-saved', ...args),
+  saveNewFile: (...args: any[]) => ipcRenderer.send('new-file-saved', ...args),
 });
